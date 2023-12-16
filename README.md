@@ -1,5 +1,11 @@
 # Bachelor's thesis "The Shape of Learning"
 
+### Resources
+- Database of all games on lichess.org by month: https://database.lichess.org/
+- Lichess API documentation: https://lichess.org/api
+- Python *berserk* documentation: https://berserk.readthedocs.io/
+- Python *stockfish* documentation: https://pypi.org/project/stockfish/
+
 ### Steps to recreate data extraction
 Disclaimer: you may have to change paths and filenames depending on how they are stored on your computer.  
 1. Download data from https://database.lichess.org/
