@@ -1,4 +1,5 @@
-# Bachelor's thesis "The Shape of Learning"
+# Online Chess Data
+My repository for the bachelor's thesis project "The Shape of Learning" at the University of Amsterdam.
 
 ### Resources
 - Database of all games on lichess.org by month: https://database.lichess.org/
