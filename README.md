@@ -7,7 +7,7 @@ My repository for the bachelor's thesis project "The Shape of Learning" at the U
 - Python *berserk* documentation: https://berserk.readthedocs.io/
 - Python *stockfish* documentation: https://pypi.org/project/stockfish/
 
-### Steps to recreate data extraction
+### Steps to recreate Data acquisition as done in the paper
 Disclaimer: you may have to change paths and filenames depending on how they are stored on your computer.  
 1. Download data from https://database.lichess.org/
     - download the .pgn.zst file for one month.
