@@ -7,38 +7,42 @@ class StockfishPlus(Stockfish):
         self.reached_endgame = False
         self.set_position()
 
-
-    def __call__(self, moves: list):
+    def __call__(self, moves: list, game_stages=False):
+        """
+        moves: a list of moves in LAN notation.
+        game stages: boolean whether or not to include game stage "opening", "middle" or "ending" for each move.
+        return: a list of position evaluations in centipawns or a tuple of lists of position evaluations in centipawns and game stages.
+        """
         self.moves = moves
-        self.reset_game_params()
-        return self.evaluate_game()
+        return self.evaluate_game(game_stages=game_stages)
         
-    def evaluate_game(self):
+    def evaluate_game(self, game_stages=False):
+        self.reset_game_params()
         stages, evals = [],[]
 
         for move in self.moves:
             self.make_moves_from_current_position([move])
             eval = self.evaluate_move()
             evals.append(eval)
-            if self.halfmoves_made < 20:
-                stages.append("opening")
-            elif not self.reached_endgame and max(self.get_material_counts()) > 13:
-                stages.append("middle")
-            else:
-                stages.append("ending")
-                self.reached_endgame = True
+            if game_stages:
+                if self.halfmoves_made < 20:
+                    stages.append("opening")
+                elif not self.reached_endgame and max(self.get_material_counts()) > 13:
+                    stages.append("middle")
+                else:
+                    stages.append("ending")
+                    self.reached_endgame = True
+                
+                self.halfmoves_made += 1
             
-            self.halfmoves_made += 1
-        
         if evals[-1] == "checkmate":
             evals[-1] = evals[-2]
 
-        return (evals, stages)
-
+        return (evals, stages) if game_stages else evals
 
     def evaluate_move(self):
         """
-        return: return a move's evaluation compared to the previous position (in centipawns).
+        return: returns a move's evaluation compared to the previous position (in centipawns).
         """
         mate_eval = 1400
         eval = self.get_evaluation()
@@ -52,7 +56,6 @@ class StockfishPlus(Stockfish):
                 return mate_eval * -1
             else:
                 return "checkmate"
-
 
     @staticmethod            
     def get_piece_value(piece):
@@ -79,10 +82,12 @@ class StockfishPlus(Stockfish):
         except AttributeError:  # case when no piece is on a given square
             return 0
 
-
     def get_material_counts(self):
+        """
+        return: returns a tuple of integers with the corresponding material counts of the current position for White and Black.
+        """
         files = ["a","b","c","d","e","f","g","h"]
-        white, black = 0, 0
+        white, black = 0, 0  # initialize material counts at zero
         
         for file in files:
             for rank in range(1,9):
@@ -95,8 +100,3 @@ class StockfishPlus(Stockfish):
                 else:
                     black += abs(piece_value)
         return (white, black)
-
-stf = StockfishPlus("C:/Users/phili/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x86-64-avx2.exe")
-
-print(stf(["e2e4","e7e5", "f2f4"]))
-
