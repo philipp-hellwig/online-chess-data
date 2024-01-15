@@ -1,5 +1,5 @@
 # Online Chess Data
-My repository for the bachelor's thesis "Leveraging Online Chess Data for Psychological Research" at the University of Amsterdam.
+The repository for my bachelor's thesis "Leveraging Online Chess Data for Psychological Research" at the University of Amsterdam.
 
 ### Resources
 - Database of all games on lichess.org by month: https://database.lichess.org/
