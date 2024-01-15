@@ -18,11 +18,11 @@ class StockfishPlus(Stockfish):
         
     def evaluate_game(self, game_stages=False):
         self.reset_game_params()
-        stages, evals = [],[]
+        stages, evals = [], []
 
         for move in self.moves:
-            self.make_moves_from_current_position([move])
-            eval = self.evaluate_move()
+            self.make_moves_from_current_position([move]) # make the next move
+            eval = self.evaluate_position() # get evaluation of the move
             evals.append(eval)
             if game_stages:
                 if self.halfmoves_made < 20:
@@ -40,9 +40,9 @@ class StockfishPlus(Stockfish):
 
         return (evals, stages) if game_stages else evals
 
-    def evaluate_move(self):
+    def evaluate_position(self):
         """
-        return: returns a move's evaluation compared to the previous position (in centipawns).
+        return: returns the current position's evaluation (in centipawns).
         """
         mate_eval = 1400
         eval = self.get_evaluation()
