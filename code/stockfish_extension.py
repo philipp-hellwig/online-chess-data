@@ -1,6 +1,6 @@
 from stockfish import Stockfish
 
-class StockfishPlus(Stockfish):
+class StockfishExt(Stockfish):
 
     def reset_game_params(self):
         self.halfmoves_made = 0
@@ -12,6 +12,14 @@ class StockfishPlus(Stockfish):
         moves: a list of moves in LAN notation.
         game stages: boolean whether or not to include game stage "opening", "middle" or "ending" for each move.
         return: a list of position evaluations in centipawns or a tuple of lists of position evaluations in centipawns and game stages.
+
+        
+        Game Stage Evaluations:
+        - Opening is defined as: Moves 1-10
+        - Middlegame is defined as: Moves after middle game and before endgame
+        - Endgame is defined as: from the move at which both sides have less than *13 points* in material. 
+        This definition is adopted from Speelman (Speelman, Jonathan (1981), Endgame Preparation, Batsford, ISBN 0-7134-4000-7 
+        - https://en.wikipedia.org/wiki/Chess_endgame#The_start_of_the_endgame)
         """
         self.moves = moves
         return self.evaluate_game(game_stages=game_stages)
