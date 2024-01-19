@@ -20,7 +20,7 @@ Disclaimer: you may have to change paths and filenames depending on how they are
 5. Run *Chess_game_stage_metrics.ipynb*:
     - you need to install stockfish (https://stockfishchess.org/) and update the reference path where the .exe is stored on your computer.
 
-### Data Sets Descriptions
+### Descriptions of the data sets
 1. rapid_games.csv: The data for all the rapid games. The column names refer to the following:
 - username: the username on lichess.org
 - id: the link to the game.
@@ -46,5 +46,11 @@ Disclaimer: you may have to change paths and filenames depending on how they are
 - moveTimes: the duration "username" spent for each of their moves in seconds.
 - averaged_cp_loss: the average centipawn loss across all of the moves by "username" in that game.
 - dateCreated: the date the game was created.
-3. rapid_ratings.csv:
-4. puzzle_ratings.csv:
+2. rapid_ratings.csv:
+- username: the username of the user.
+- rating: the user's rapid rating on the corresponding date (Glicko-2 Rating).
+- date: the date at which the user had the corresponding rating.
+3. puzzle_ratings.csv:
+- username: the username of the user.
+- rating: the user's rapid rating on the corresponding date (Glicko-2 Rating).
+- date: the date at which the user had the corresponding rating.
