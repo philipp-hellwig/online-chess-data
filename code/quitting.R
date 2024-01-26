@@ -83,5 +83,6 @@ for(user in usernames){
 # drop NA cases
 quitting_data = quitting_data[complete.cases(quitting_data),]
 
-# correlation matrix
-cor = round(cor(subset(quitting_data, select = -c(p,q, quit_dur))), 2)
+# linear regression with grit as a predictor
+reg = lm(rating~grit, quitting_data)
+summary(reg)

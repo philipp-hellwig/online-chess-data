@@ -7,10 +7,7 @@ library(devtools)
 # install_github("choisy/cutoff")
 library(cutoff)
 
-
-
 rapid_games = read.csv("../data/rapid_games_Dec15final.csv")
-
 # only analyze move times for games with time format 10+5:
 ten_plus_five = subset(rapid_games, clock=="{'initial': 600, 'increment': 5, 'totalTime': 800}")
 move_times = numeric()
@@ -19,7 +16,7 @@ for(i in 1:nrow(ten_plus_five)){
   move_times = append(move_times, csv_list_to_vec(ten_plus_five[i,"moveTimes"], numeric=TRUE))
 }
 
-# replacing premoves with a very small number:
+# replace premoves (time==0) with a very small number instead:
 move_times[move_times==0] = 1e-5
 # drop negative move times (this can occur if the opponent gives the user extra time for their move):
 move_times = move_times[move_times>0]
@@ -37,11 +34,9 @@ hist(
 
 # Hartigan's dip test for uni-/ multimodality
 dip.test(log_move_times)
-
 # test for bimodality
 is.bimodal(log_move_times)
 modes = Modes(log_move_times)
-
 # mixed model estimation
 out <- cutoff::em(log_move_times,"normal","normal")
 confint(out)
@@ -57,12 +52,9 @@ hist(
   col="blue",
   main=NULL
 )
-
-
 dist = function(x, mean, sd, proportion){
   return(dnorm(x, mean, sd) * proportion )
 }
-
 # plotting the pdf of d1
 curve(dist(x, out$param[1], out$param[2], mean(out$lambda)), -2, 5, add=TRUE, lwd=2, lty=2)
 

@@ -85,3 +85,4 @@ stockfish/wiki/Useful-data.md
 data/rapid_games_Dec15(LAN,evals).csv
 data/rapid_games_Dec15final.csv
 code/.Rhistory
+code/convert_citations.py
