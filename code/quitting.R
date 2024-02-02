@@ -86,3 +86,8 @@ quitting_data = quitting_data[complete.cases(quitting_data),]
 # linear regression with grit as a predictor
 reg = lm(rating~grit, quitting_data)
 summary(reg)
+
+# t-test quitting duration
+t.test(quitting_data$dur_quit_w_or_d, quitting_data$dur_quit_l, paired=TRUE)
+mean(quitting_data$dur_quit_w_or_d); mean(quitting_data$dur_quit_l)
+sd(quitting_data$dur_quit_w_or_d); sd(quitting_data$dur_quit_l)

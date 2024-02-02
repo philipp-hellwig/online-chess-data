@@ -35,10 +35,22 @@ for(user in unique(rapid_games$username)){
   )
 }
 
-t.test(pes$post_rt, pes$pre_rt, paired=TRUE) # paired t-test for RTs (thinking times)
+tfit = t.test(pes$post_rt, pes$pre_rt, paired=TRUE) # paired t-test for RTs (thinking times)
 mean(pes$post_rt, na.rm=TRUE); sd(pes$post_rt, na.rm=TRUE)
 mean(pes$pre_rt, na.rm=TRUE); sd(pes$pre_rt, na.rm=TRUE)
 
 t.test(pes$pre_cpl, pes$post_cpl, paired=TRUE) # paired t-test for centipawn losses
 mean(pes$post_cpl, na.rm=TRUE); sd(pes$post_cpl, na.rm=TRUE)
 mean(pes$pre_cpl, na.rm=TRUE); sd(pes$post_cpl, na.rm=TRUE)
+
+plot(
+  c(0.5,1.5),
+  c(mean(pes$pre_rt, na.rm=TRUE), mean(pes$post_rt, na.rm=TRUE)),
+  ylim = c(0,20),
+  xlim = c(0, 2),
+  xlab = "",
+  ylab = "avg. in seconds",
+  xaxt="n"
+  )
+axis(1, c(0.5,1.5), c("pre","post"))
+

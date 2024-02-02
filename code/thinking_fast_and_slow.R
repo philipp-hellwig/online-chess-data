@@ -32,11 +32,15 @@ hist(
   main=NULL
   )
 
+# reducing the size of the data as the shapiro wilk only allows for a maximum of 5000 observations:
+shapiro_move_times = sample(log_move_times, 5000)
+shapiro.test(shapiro_move_times)
+
 # Hartigan's dip test for uni-/ multimodality
 dip.test(log_move_times)
 # test for bimodality
 is.bimodal(log_move_times)
-modes = Modes(log_move_times)
+
 # mixed model estimation
 out <- cutoff::em(log_move_times,"normal","normal")
 confint(out)
