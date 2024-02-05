@@ -17,7 +17,7 @@ Disclaimer: you may have to change paths and filenames depending on how they are
     - to access the API, you need to create a lichess account and generate an API token (after creating an account go to https://lichess.org/account/profile > API access tokens).
 4. Run *san2lan.R* to convert SAN (short algebraic notation) to LAN (long algebraic notation).
    - this is necessary for the stockfish package which can only take moves in LAN format as input.
-5. Run *Chess_game_stage_metrics.ipynb*:
+5. Run *chess_metrics.ipynb*:
     - before running the script, you need to install stockfish (https://stockfishchess.org/) and update the reference path where the .exe is stored on your computer.
 
 ### Descriptions of the data sets
