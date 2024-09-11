@@ -86,3 +86,6 @@ data/rapid_games_Dec15(LAN,evals).csv
 data/rapid_games_Dec15final.csv
 code/.Rhistory
 code/convert_citations.py
+data/lichess_db_standard_rated_2016-09.pgn
+data/lichess_db_standard_rated_2016-09.pgn.zst
+data/usernames.txt
