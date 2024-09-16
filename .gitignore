@@ -90,3 +90,4 @@ data/lichess_db_standard_rated_2016-09.pgn
 data/lichess_db_standard_rated_2016-09.pgn.zst
 data/usernames.txt
 data/lichess_db_standard_rated_2024-08.pgn
+data/all_ratings_users_active_in_Aug24.csv
